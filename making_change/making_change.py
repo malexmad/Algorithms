@@ -3,7 +3,18 @@
 import sys
 
 def making_change(amount, denominations):
-  pass 
+
+  combo = [0] * (amount+1)
+
+  combo[0] = 1
+
+  for coin in denominations:
+    for x in range(1, len(combo)):
+      if x >= coin:
+        combo[x] += combo[x-coin]
+
+  return combo[amount]
+
 
 
 if __name__ == "__main__":
